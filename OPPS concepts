@@ -1,0 +1,258 @@
+Declare a class---
+  
+#include<iostream>
+using namespace std;
+class Fruit
+{
+    public:
+          string name;
+          string color;
+};
+int main()
+{
+    Fruit apple;
+    apple.name="Apple";
+    apple.color="Red";
+    cout<<apple.name<<" - " << apple.color<<endl;
+    
+    Fruit *mango=new Fruit();
+    mango->name="MANGO";
+    mango->color="YELLOW";
+    
+    cout<<mango->name <<" - " << mango->color<<endl;
+    return 0;
+}
+
+ constructor--:
+#include<iostream>
+using namespace std;
+class Rectangle
+{
+    public:
+        int l;
+        int b;
+        Rectangle() // Default constructor
+        {
+            l=0;
+            b=0;
+        }
+        Rectangle(int x,int y) // Parametrized constructor
+        {
+            l=x;
+            b=y;
+        }
+        Rectangle(Rectangle & r) // Copy constructor
+        {
+            l=r.l;
+            b=r.b;
+        }
+};
+int main()
+{
+    Rectangle r1;
+    Rectangle r2(3,4);
+    Rectangle r3=r2;
+    cout<<r1.l<<" " <<r1.b << endl;
+    cout << r2.l << " "<< r2.b << endl;
+    cout<< r3.l << " " << r3.b << endl;
+    return 0;
+} 
+
+Destructor --:
+
+#include<iostream>
+using namespace std;
+class Rectangle
+{
+    public:
+        int l;
+        int b;
+        Rectangle() // Default constructor
+        {
+            l=0;
+            b=0;
+        }
+        Rectangle(int x,int y) // Parametrized constructor
+        {
+            l=x;
+            b=y;
+        }
+        Rectangle(Rectangle & r) // Copy constructor
+        {
+            l=r.l;
+            b=r.b;
+        }
+        ~ Rectangle() 
+        {
+            cout << "Destructor is called" << endl;
+        }
+};
+int main()
+{
+    Rectangle r1;
+    Rectangle r2(3,4);
+    Rectangle r3=r2;
+    Rectangle *R=new Rectangle();
+    cout << R->l << " " << R->b << endl;
+    delete R;
+    cout<<r1.l<<" " <<r1.b << endl;
+    cout << r2.l << " "<< r2.b << endl;
+    cout<< r3.l << " " << r3.b << endl;
+    return 0;
+}
+
+Enacapsulation -:
+
+  #include<iostream>
+using namespace std;
+class ABC
+{
+    int x;
+    public:
+    void set(int n)
+    {
+        x=n;
+        
+    }
+    int get()
+    {
+        return x;
+    }
+};
+int main()
+{
+    ABC obj1;
+    obj1.set(5);
+    cout << obj1.get() << endl;
+    return 0;
+}
+
+Single inheritance -:
+
+  #include<iostream>
+using namespace std;
+class parent
+{
+    public:
+          parent()
+          {
+              cout << "parent class"<< endl;
+          }
+};
+class child : public parent
+{
+    public:
+    child()
+    {
+        cout << "child class"<< endl;
+    }
+};
+int main()
+{
+    child c;
+    return 0;
+}
+
+
+Multi-level Inheritance :-
+  #include<iostream>
+using namespace std;
+class parent
+{
+    public:
+          parent()
+          {
+              cout << "parent class"<< endl;
+          }
+};
+class child : public parent
+{
+    public:
+    child()
+    {
+        cout << "child class"<< endl;
+    }
+};
+class grandchild : public child
+{
+    public:
+    grandchild()
+    {
+        cout << "grandchild class " << endl; 
+    }
+};
+int main()
+{
+    grandchild gc;
+    return 0;
+}
+
+Multiple Inheritance :-
+
+#include<iostream>
+using namespace std;
+class parent1
+{
+    public:
+          parent1()
+          {
+              cout << "parent1 class"<< endl;
+          }
+};
+class parent2
+{
+    public :
+    parent2()
+    {
+        cout << "parent2 class" << endl;
+    }
+};
+class child : public parent1,public parent2
+{
+    public:
+    child()
+    {
+        cout << "child class"<< endl;
+    }
+};
+int main()
+{
+    child c;
+    return 0;
+}
+
+
+Hierarchical Inheritance :-
+#include<iostream>
+using namespace std;
+class parent
+{
+    public:
+          parent()
+          {
+              cout << "parent class"<< endl;
+          }
+};
+class child1 : public parent
+{
+    public:
+    child1()
+    {
+        cout << "child1 class"<< endl;
+    }
+};
+class child2 : public parent
+{
+    public:
+    child2()
+    {
+        cout  << "child2 class"<< endl;
+    }
+};
+
+int main()
+{
+    parent p;
+    return 0;
+}
+  
