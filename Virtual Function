@@ -1,0 +1,55 @@
+//pointer case accessed this Function
+#include<iostream>
+using namespace std;
+class Base
+{
+    public:
+    virtual void fun()
+    {
+        cout << "I am base function"<< endl;
+        
+    }
+};
+class Derived:public Base
+{
+    public:
+    void fun()
+    {
+        cout << " I am Derived funtion " << endl;
+    }
+};
+int main()
+{
+    Base *p=new Derived();
+    p->fun();
+    return 0;
+}
+
+// Reference can accessed this Function:-
+
+#include<iostream>
+using namespace std;
+class Base
+{
+    public:
+    virtual void fun()
+    {
+        cout << "I am base function"<< endl;
+        
+    }
+};
+class Derived:public Base
+{
+    public:
+    void fun()
+    {
+        cout << " I am Derived funtion " << endl;
+    }
+};
+int main()
+{
+    Derived d;
+    Base&b=b=d;
+    b.fun();
+    return 0;
+}
