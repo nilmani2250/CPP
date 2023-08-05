@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+class A;
+class B {
+    private:
+    int money=10;
+    friend void C(A,B);
+};
+class A  {
+    private:
+    int money=20;
+    friend void C(A,B);
+};
+void C(A r1,B r2)
+{
+    cout<<"sum = " << r1.money+r2.money<<endl;
+}
+int main()
+{
+    A obj1;
+    B obj2;
+    C(obj1,obj2);
+}
