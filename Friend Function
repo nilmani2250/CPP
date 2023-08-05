@@ -1,3 +1,4 @@
+Exmaple: If two class private
 #include<iostream>
 using namespace std;
 class A;
@@ -20,4 +21,42 @@ int main()
     A obj1;
     B obj2;
     C(obj1,obj2);
+}
+
+Example:-
+
+#include <iostream>
+using namespace std;
+
+class A  {
+private:
+	int a;
+
+protected:
+	int b;
+
+public:
+     A()
+	{
+		a = 10;
+		b = 99;
+	}
+	
+	// friend function declaration
+	friend void B(A& obj);
+};
+// friend function definition
+void B(A& obj)
+{
+	cout << "Private Vlaue: " << obj.a
+		<< endl;
+	cout << "Protected Vlaue: " << obj.b;
+}
+
+int main()
+{
+	A object1;
+	B(object1);
+
+	return 0;
 }
