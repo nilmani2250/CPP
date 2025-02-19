@@ -1,14 +1,11 @@
 #include <iostream>
-
 class Car
 {
         private:
                 float fuel;
                 int speed;
                 int passenger;
-
                 static int totalcar;
-
         public:
                 // Constructor
                 Car()
@@ -39,14 +36,11 @@ class Car
 
 // Initialize static member variable
 int Car::totalcar = 0;
-
 int main()
 {
         Car car1;
         Car car2;
-
 	 Car::Totalcars();
-
         return 0;
 }
             
