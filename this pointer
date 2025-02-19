@@ -1,0 +1,28 @@
+#include<iostream>
+
+class Car
+{
+       private :
+                float fuel;
+                int speed;
+                int passenger;
+        public :
+                Car()
+                {
+                        this->fuel = 10.5;
+                        this->speed = 0;
+                        this->passenger = 1;
+                }
+                void display()
+                {
+                        std::cout << fuel << std::endl;
+                        std::cout << speed << std::endl;
+                        std::cout << passenger << std::endl;
+                }
+};
+int main()
+{
+        Car CAR;
+        CAR.display();
+        return 0;
+}
