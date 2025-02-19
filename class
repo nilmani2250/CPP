@@ -1,0 +1,78 @@
+#include <iostream>
+class Car
+{
+private:
+    float fuel;
+    float speed;
+    int passenger;
+
+public:
+    // Default Constructor
+    Car()
+    {
+        fuel = 0;
+        speed = 0;
+        passenger = 0;
+    }
+
+    // Parameterized Constructor
+    Car(float f, float s, int p)
+    {
+        fuel = f;
+        speed = s;
+        passenger = p;
+    }
+
+    // Destructor
+    ~Car()
+    {
+        std::cout << "Car object destroyed\n";
+    }
+
+    void FillFuel(float amount)
+    {
+        fuel = amount;
+    }
+
+    void Accelerate()
+    {
+        speed++;
+        fuel -= 0.6f;
+    }
+
+    void Brake()
+    {
+        speed = 0;
+    }
+
+    void AddPassenger(int count)
+    {
+        passenger = count;
+    }
+
+    void Dashboard()
+    {
+        std::cout << "Fuel: " << fuel << std::endl;
+        std::cout << "Speed: " << speed << std::endl;
+        std::cout << "Passengers: " << passenger << std::endl;
+    }
+};
+
+int main()
+{
+    // Using Default Constructor
+    Car car1;
+    car1.FillFuel(10);
+    car1.Accelerate();
+    car1.Dashboard();
+
+    std::cout << "\n";
+
+    // Using Parameterized Constructor
+    Car car2(15, 5, 2);
+    car2.Accelerate();
+    car2.Brake();
+    car2.Dashboard();
+
+    return 0;
+}
