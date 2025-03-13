@@ -308,3 +308,344 @@ int main()
         return 0;
 }
 *******************************************************************************************
+
+POLYMORPHISM : -
+***************************************************************
+**************Function Overloading Polymorphism : *************************
+
+#include<iostream>
+class A
+{
+        public:
+                void VVDN(int a, int b)
+                {
+                        std::cout << a * b << std::endl;
+                }
+
+                void VVDN( int a ,int b ,int c ,int d)
+                {
+                        std::cout << (a+b+c+d) << std::endl;
+                }
+
+                void VVDN( double a, double b)
+                {
+                        std::cout << a * b << std::endl;
+                }
+
+};
+int main()
+{
+        A B;
+        B.VVDN(20,20);
+        B.VVDN(10, 11,12,13);
+        B.VVDN(7.6, 6.5);
+
+        return 0;
+}
+
+***************************************************************************************
+
+***********Function Overriding :- ***************************
+
+#include<iostream>
+class parent
+{
+        public:
+                 void print()
+                {
+                        std::cout << "This is the function of base class" << std::endl;
+                }
+
+};
+class child : public parent
+{
+        public:
+                void print()
+                {
+                        std::cout << "This is the function of Derived class " << std::endl;
+                }
+
+};
+int main()
+{
+        child obj1;
+        obj1.print();
+
+      return 0;
+}
+***************************************************************************************
+
+*******************Oprator Overloding Polymorphism :- ***************************
+#include<iostream>
+class overload
+{
+        private:
+                int num1;
+                int num2;
+
+        public:
+                overload(int n1, int n2)
+                {
+                        int result;
+                        num1 = n1;
+                        num2 = n2;
+
+                        result = num1 - num2;
+                        std::cout << "Result:" << result << std::endl;
+                }
+                void operator-()
+                {
+                        num1 = -num1;
+                        num2 = -num2;
+                }
+
+                void display()
+                {
+                        std::cout << "Number1: " <<num1 << std::endl;
+                        std::cout << "Number2: " <<num2 << std::endl;
+                }
+};
+int main()
+{
+        overload obj1(100,20);
+        -obj1;
+        obj1.display();
+        return 0;
+}
+******************************************************************************
+*****************Virtual Overriding :-*****************
+#include<iostream>
+class Base
+{
+        public:
+                virtual void print()
+                {
+                        std::cout << " this is the function of base class" << std:: endl;
+                }
+};
+
+class Derived : public Base
+{
+        public :
+                void print()
+                {
+                        std::cout << "This is the  function of Derived class" << std::endl;
+                }
+};
+int main()
+{
+        Base *b;
+        Derived d;
+        b= &d;
+        b->print();
+
+        return 0;
+}
+*****************************************************************
+
+OPERATOR OVERLOADING :-
+*************************************************************
+**********************Binary Operator Overloading :- ********************************
+#include<iostream>
+class Number
+{
+        private:
+                int value;
+
+        public :
+                Number(int val) : value(val)
+        {
+
+        }
+        friend Number operator+(const Number& num1, const Number& num2);
+
+        void display() const
+        {
+                std::cout << "Value : " << value << std::endl;
+        }
+};
+
+Number operator + (const Number& num1, const Number& num2)
+{
+        return Number(num1.value + num2.value);
+}
+int main()
+{
+        Number num1(123), num2(24);
+
+        std::cout << "First Number : ";
+        num1.display();
+
+        std::cout << "second Number : ";
+        num2.display();
+
+        Number result = num1 + num2;
+        std::cout << "After addition " ;
+
+        result.display();
+
+        return 0;
+}
+********************************************************************************
+************* Unary Operator Overloading : - *******************************
+
+#include<iostream>
+class Number
+{
+        private:
+                int value;
+
+        public :
+
+                Number(int val) : value(val)
+        {
+
+        }
+                friend Number operator -(const Number & num);
+
+                void display() const
+                {
+                        std:: cout << "Value : " << value << std::endl;
+                }
+};
+Number operator-(const Number& num)
+{
+        return Number(-num.value);
+}
+int main()
+{
+        Number num1(14);
+        num1.display();
+
+        Number num2 = -num1;
+
+        std::cout << "After : ";
+
+        num2.display();
+
+        return 0;
+}
+*****************************************************************
+******************Array Subcript :- **********************
+
+#include<iostream>
+class Point
+{
+        int arr[2];
+        public :
+        Point(int x = 0, int y = 0)
+        {
+                arr[0] = x;
+                arr[1] = y;
+        }
+        void Print()
+        {
+                std::cout << "x " << arr[0] << " y " << arr[1] <<std::endl;
+        }
+        int& operator [] (int pos)
+        {
+                if(pos == 0)
+                        return arr[0];
+                else if(pos == 1)
+                        return arr[1];
+                else
+                {
+                        std::cout << " out of Bound case" << std::endl;
+                        exit(0);
+                }
+        }
+};
+
+int main()
+{
+        Point P(10, 20);
+        P.Print();
+
+        P[0] = 11;
+        P[1] = 21;
+        P.Print();
+
+        P[2] = 1;
+
+        return 0;
+}
+***************************************************************************
+DYNAMIC MEMORY ALLOCATION :-
+#include <iostream>
+#include <cstring>
+
+void New()
+{
+    int *p = new int;
+    *p = 10;
+
+    std::cout << "Single Integer: " << *p << std::endl;
+
+    delete p;
+    p = nullptr; // Prevent dangling pointer
+}
+
+void NewArrays()
+{
+    int *p = new int[5];
+
+    for (int i = 0; i < 5; i++)
+    {
+        p[i] = i;
+    }
+
+    std::cout << "Array: ";
+    for (int i = 0; i < 5; i++)
+    {
+        std::cout << p[i] << " ";
+    }
+    std::cout << std::endl;
+
+    delete[] p;
+    p = nullptr;
+}
+
+void strings()
+{
+    char *p = new char[4];
+
+    strcpy(p, "C++");
+
+    std::cout << "String: " << p << std::endl;
+
+    delete[] p;
+    p = nullptr;
+}
+
+void TwoD()
+{
+    int **pData = new int *[2];
+
+    for (int i = 0; i < 2; i++)
+    {
+        pData[i] = new int[3];
+    }
+
+    pData[0][1] = 2;
+
+    std::cout << "TwoD " << pData[0][1] << std::endl;
+
+    for (int i = 0; i < 2; i++)
+    {
+        delete[] pData[i];
+    }
+
+    delete[] pData;
+    pData = nullptr;
+}
+
+int main()
+{
+    New();
+    NewArrays();
+    strings();
+    TwoD();
+
+    return 0;
+}
+*************************************************
