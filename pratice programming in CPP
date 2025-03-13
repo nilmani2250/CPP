@@ -1,0 +1,310 @@
+Binding:-
+*********Dynamic Binding *************** 
+#include<iostream>
+class Base
+{
+        public:
+                virtual void fun()
+                {
+                        std::cout << "This is the function of Base class" << std::endl;
+                }
+};
+
+class Derived : public Base
+{
+        public :
+                void fun()
+                {
+                        std::cout << "Thsi is the function of Derived class " << std:: endl;
+                }
+};
+int main()
+{
+
+        Base *ptr;
+        Derived obj;
+        ptr = &obj;
+        ptr->fun();
+
+        return 0;
+}
+**********************************************************************************
+
+****************Static Binding :- *****************************************
+
+#include<iostream>
+class Base
+{
+        public :
+                void fun()
+                {
+                        std::cout << "This is function of base class" << std::endl;
+                }
+};
+class Derived : public Base
+{
+        public :
+                void fun()
+                {
+                        std::cout << "This is function of Derived class" << std::endl;
+                }
+};
+int main()
+{
+        Base obj1;
+        obj1.fun();
+
+        return 0;
+}
+
+********************************************************************************
+INHERITANCE :- 
+*************************
+******************* 1. Single Inheritance :- ********************************************
+
+#include<iostream>
+class Animal
+{
+        public:
+                void eat()
+                {
+                        std::cout << "Eating" << std::endl;
+                }
+};
+class Dog : public  Animal
+{
+        public : 
+                void Bark()
+                {
+                        std::cout << "Breaking.... Baooo" << std::endl;
+                }
+};
+
+int main()
+{
+        Dog D1;
+        
+        D1.eat();
+        D1.Bark();
+
+        return 0;
+}
+********************************************************************
+**********************2. Multiple Inhertance :- **************************************** 
+
+#include<iostream>
+class Animal
+{
+        public :
+                void Eat()
+                {
+                        std::cout << "Eating......" << std::endl;
+                }
+};
+class Walker
+{
+        public :
+                void walk()
+                 {
+                         std::cout << "walking....... " << std::endl;
+                 }
+};
+class Dog : public Animal, public Walker
+{
+        public :
+                void bark()
+                {
+                        std::cout << "Barking......." << std::endl;
+                }
+};
+int main()
+{
+        Dog D1;
+        D1.Eat();
+        D1.walk();
+        D1.bark();
+
+        return 0;
+}
+*********************************************************************
+**************************3. Multipath Inheritance :-*******************************************
+
+#include<iostream>
+class Animal
+{
+        public :
+                void Eat()
+                {
+                        std::cout << "Eating...." << std::endl;
+                }
+};
+class Mammal : virtual public Animal
+{
+
+};
+class Reptile : virtual public Animal
+{
+
+};
+class Dinosaur : public Mammal, public Reptile
+{
+
+};
+
+int main()
+{
+        Dinosaur D1;
+        D1.Eat();
+
+        return 0;
+}
+**********************************************************************************
+
+****************************4. MultiLevel Inheritance :- ************************************** 
+
+#include<iostream>
+class Animal
+{
+        public:
+                void Eat()
+                {
+                        std::cout << "Eating..." << std::endl;
+                }
+};
+class Dog : public Animal
+{
+        public :
+                void Bark()
+                {
+                        std::cout << "Barking........ Baooo!" << std::endl;
+                }
+};
+class Puppy : public Dog
+{
+        public :
+                void Weep()
+                {
+                        std::cout << "Weeping..... whiii!" << std::endl;
+                }
+};
+int main()
+{
+        Puppy P;
+        P.Eat();
+        P.Bark();
+        P.Weep();
+
+        return 0;
+}
+******************************************************************************************
+****************************** 5. Heirarchical Inheritance :- ************************************ 
+
+#include<iostream>
+class Animal
+{
+        public:
+                void eat()
+                {
+                        std::cout << "Eating" << std::endl;
+                }
+                void walk()
+                {
+                        std::cout << "Walking" << std::endl;
+                }
+};
+
+class Dog : public Animal
+{
+        public:
+                void talk()
+                {
+                        std::cout << " Baoo" << std::endl;
+                }
+};
+class Cat : public Animal
+{
+        public :
+                void talk()
+                {
+                        std::cout << "Miaooo" << std::endl;
+                }
+};
+class Dinasaur : public Animal
+{
+        public :
+                void talk()
+                {
+                        std::cout << "Haaooo" << std::endl;
+                }
+};
+int main()
+{
+        Dog D;
+        Cat C;
+        Dinasaur DI;
+
+        D.eat();
+        C.eat();
+        DI.eat();
+
+        D.walk();
+        C.walk();
+        DI.walk();
+
+        D.talk();
+        C.talk();
+        DI.talk();
+
+        return 0;
+}
+*************************************************************************************
+***************** 6. Hybrid Inheritance :-******************************************* 
+
+#include<iostream>
+class Animal
+{
+        public :
+                void Eat()
+                {
+                        std::cout << "Eating...... " << std::endl;
+                }
+};
+
+class Walker
+{
+        public :
+                void Walk()
+                {
+                        std::cout << "Walking....." << std::endl;
+                }
+};
+
+class Dog : public Animal
+{
+        public :
+                void bark()
+                {
+                        std::cout << "Barking.....Baooo!" << std::endl;
+                }
+};
+
+class Puppy : public Dog , public Walker
+{
+        public :
+                void Weep()
+                {
+                        std::cout << "Weeping......whiii!" << std::endl;
+                }
+};
+int main()
+{
+        Puppy P;
+
+        P.Eat();
+        P.Walk();
+        P.bark();
+        P.Weep();
+
+        return 0;
+}
+*******************************************************************************************
